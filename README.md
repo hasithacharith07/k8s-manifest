@@ -1,4 +1,5 @@
 # Kubernetes Manifests for Example Application
+![image](https://github.com/hasithacharith07/k8s-manifest/assets/167498308/04991a0b-c388-45b4-9a51-5a34e0452033)
 
 This repository contains Kubernetes manifests for deploying an example application. The manifests include configurations for Namespace, Secret, ConfigMap, Deployment, Service, Ingress, Horizontal Pod Autoscaler (HPA), Persistent Volume (PV), Persistent Volume Claim (PVC), and Storage Class for Amazon EFS.
 
