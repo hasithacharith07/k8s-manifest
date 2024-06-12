@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+  namespace: example-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-container
+        image: busybox
+        command: ["sh", "-c", "while true; do echo hello; sleep 10;done"]
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: example-secret
+              key: secret-key
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+        - name: efs-volume
+          mountPath: /mnt/efs
+      volumes:
+      - name: config-volume
+        configMap:
+          name: example-config
+      - name: efs-volume
+        persistentVolumeClaim:
+          claimName: efs-pvc
